@@ -1,17 +1,29 @@
 package com.bridgelabz;
 //Employee Wage Computation Problems Using OOPS Concept
-//Use Class Method and Class Variables
+//Ability To Save Total Wage For Each Company
 public class EmployeeWages
 {
-    public static final int IS_PART_TIME = 1;
-    public static final int IS_FULL_TIME = 2;
+    final int IS_PART_TIME = 1;
+    final int IS_FULL_TIME = 2;
 
-    public static int computeEmpWage(String companyName, int empRatePerHour ,int  numOfWorkingDays , int maxHoursPerMonth)
+    final String companyName;
+    final int empRatePerHour;
+    final int numOfWorkingDays;
+    final int maxHoursPerMonth;
+    int totalEmpWage;
+
+    public EmployeeWages(String companyName, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
     {
-        //Variables
-        int empHrs = 0;
-        int totalEmpHrs = 0;
-        int totalWorkingDays = 0;
+        this.companyName = companyName;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+    public void computeEmpWage()
+    {
+        //variables
+        int empHrs = 0,totalEmpHrs = 0, totalWorkingDays = 0;
 
         //Computation
         while (totalEmpHrs <= maxHoursPerMonth &&
@@ -33,16 +45,23 @@ public class EmployeeWages
             totalEmpHrs += empHrs;
             System.out.println("Day: " + totalWorkingDays + " Emp Hr: " + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * empRatePerHour;
-        System.out.println("Total Emp Wage for company: " + companyName+" is:" + totalEmpWage);
-        return totalEmpWage;
+        totalEmpWage = totalEmpHrs * empRatePerHour;
+
 
 
     }
-    public static void main(String args[])
-    {
-        computeEmpWage("D-Mart",20,20,100);
-        computeEmpWage("Amazon",10,10,100);
+
+    public String toString() {
+        return "Total Emp Wage for Company: " + companyName +" is: " + totalEmpWage;
+    }
+    public static void main(String[] args) {
+
+        EmployeeWages dMart = new EmployeeWages("D-Mart", 20, 20, 100);
+        EmployeeWages reliance = new EmployeeWages("Amazon", 10, 10, 100);
+        dMart.computeEmpWage();
+        System.out.println(dMart);
+        reliance.computeEmpWage();
+        System.out.println(reliance);
     }
 }
 
