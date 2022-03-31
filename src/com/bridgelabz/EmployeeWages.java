@@ -2,7 +2,7 @@ package com.bridgelabz;
 //Employee Wage Computation Problems Using OOPS Concept
 //Refactor to have list of multiple companies to manage Employee Wage.
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class EmployeeWages
 {
@@ -66,7 +66,7 @@ public class EmployeeWages
             int employeehrs=0;
             int totalworkdays=0;
             int totalemphrs=0;
-            //int totalwage=0;
+            //int totalWage=0;
 
             while(totalemphrs<=c.maxHourPerMonth&&totalworkdays<c.numWorkingDays)
             {
@@ -86,6 +86,7 @@ public class EmployeeWages
                 }
                 totalemphrs+=employeehrs;
                 System.out.println("Emp hrs for day "+totalworkdays+" is: "+employeehrs);
+                System.out.println("Daily wage for employee is: "+ employeehrs*c.empRatePerHour);
             }
             return totalemphrs* c.empRatePerHour;
         }
